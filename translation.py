@@ -106,29 +106,28 @@ def tofswiki(line):
     return fswiki
 
 
-# check
-
-if (len(sys.argv) <= 3):
-    print("invalid argument:", sys.argv[0], "(input)", "(output)", "(trancelate to)")
-    sys.exit(1)
-if not (os.path.exists(sys.argv[1])):
-    print(sys.argv[1] + ": file dont exists.")
-    sys.exit(1)
-if (os.path.exists(sys.argv[2])):
-    check = input(sys.argv[2] + ": file already exists. overwrite? [y/n]: ")
-    if (check.lower() != "y"):
+if __name__ == '__main__':
+    if (len(sys.argv) <= 3):
+        print("invalid argument:", sys.argv[0], "(input)", "(output)", "(trancelate to)")
         sys.exit(1)
-if (sys.argv[3] != "markdown" and sys.argv[3] != "fswiki"):
-    print("argv[3] is only \"markdown\" or \"fswiki\"")
+    if not (os.path.exists(sys.argv[1])):
+        print(sys.argv[1] + ": file dont exists.")
+        sys.exit(1)
+    if (os.path.exists(sys.argv[2])):
+        check = input(sys.argv[2] + ": file already exists. overwrite? [y/n]: ")
+        if (check.lower() != "y"):
+            sys.exit(1)
+    if (sys.argv[3] != "markdown" and sys.argv[3] != "fswiki"):
+        print("argv[3] is only \"markdown\" or \"fswiki\"")
 
-with open(sys.argv[1], "r") as rfile:
-    with open(sys.argv[2], "w")as wfile:
-        if (sys.argv[3] == "markdown"):
-            for line in rfile:
-                wfile.write(tomarkdown(line))
-        elif (sys.argv[3] == "fswiki"):
-            for line in rfile:
-                if not (table_border):
-                    wfile.write(tofswiki(line))
-                else:
-                    table_border = False
+    with open(sys.argv[1], "r") as rfile:
+        with open(sys.argv[2], "w")as wfile:
+            if (sys.argv[3] == "markdown"):
+                for line in rfile:
+                    wfile.write(tomarkdown(line))
+            elif (sys.argv[3] == "fswiki"):
+                for line in rfile:
+                    if not (table_border):
+                        wfile.write(tofswiki(line))
+                    else:
+                        table_border = False
