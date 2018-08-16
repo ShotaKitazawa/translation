@@ -1,8 +1,12 @@
 # About
 
-[FreeStyleWiki](http://fswiki.osdn.jp/cgi-bin/wiki.cgi)記法 -> Markdown
+[FreeStyleWiki](http://fswiki.osdn.jp/cgi-bin/wiki.cgi)記法 <-> Markdown
 
-# TODO
+# Execute
 
-- 変換漏れ
-    - FSwiki の強調 (`<hoge>`) を md 記法に変換
+```
+python translation.py $input_file $output_file $trancelate_to
+# c.f
+# python translation.py hoge.fswiki hoge.md markdown
+```
+
